@@ -6,7 +6,7 @@
         <item>@drawable/two</item>
     </array>
 
-    <string-array name="spinnerNames">
+    <string-array name="imageNames">
         <item>Olivia</item>
         <item>Women in a window</item>
     </string-array>

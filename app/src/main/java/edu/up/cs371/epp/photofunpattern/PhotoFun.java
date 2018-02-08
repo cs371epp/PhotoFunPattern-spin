@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
         import android.graphics.drawable.BitmapDrawable;
         import android.widget.ImageView;
         import android.widget.Button;
+        import android.widget.Spinner;
+        import android.widget.ArrayAdapter;
         import android.view.View;
 
 /**
@@ -23,6 +25,18 @@ public class PhotoFun extends AppCompatActivity {
     private Bitmap myOriginalBmp;
     private ImageView myNewImageView;
 
+    private String[] myImageNames;
+
+    private void initSpinner (){
+        Spinner spinner = (Spinner) findViewById(R.id.imageNames);
+        myImageNames = getResources().getStringArray(R.array.imageNames);
+        ArrayAdapter adapter = new ArrayAdapter<String> (this,
+                android.R.layout.simple_list_item_1,
+                android.R.id.text1,
+                myImageNames);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+    }
 
     /*
     * onCreate This constructor lays out the user interface, initializes the
@@ -50,6 +64,8 @@ public class PhotoFun extends AppCompatActivity {
                 (Button) findViewById(R.id.brightnessFilterButton);
         brightnessFilterButton.setOnClickListener
                 (new brightnessFilterButtonListener());
+
+        initSpinner();
     }
 
     /*
