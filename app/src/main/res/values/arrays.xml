@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <resources>
+
+    <array name="imageIdArray">
+        <item>@drawable/olivia_small</item>
+        <item>@drawable/two</item>
+    </array>
+
+    <string-array name="spinnerNames">
+        <item>Olivia</item>
+        <item>Women in a window</item>
+    </string-array>
+</resources>
