@@ -2,16 +2,16 @@ package edu.up.cs371.epp.photofunpattern;
 
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
-        import android.os.Bundle;
-        import android.graphics.Bitmap;
-        import android.graphics.drawable.BitmapDrawable;
-        import android.widget.ImageView;
-        import android.widget.Button;
-        import android.widget.Spinner;
-        import android.widget.ArrayAdapter;
-        import java.util.ArrayList;
-        import android.content.res.TypedArray;
-        import android.view.View;
+import android.os.Bundle;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.widget.ImageView;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.ArrayAdapter;
+import java.util.ArrayList;
+import android.content.res.TypedArray;
+import android.view.View;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.AdapterView;
 
