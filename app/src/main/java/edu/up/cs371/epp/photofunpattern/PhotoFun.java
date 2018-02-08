@@ -1,5 +1,6 @@
 package edu.up.cs371.epp.photofunpattern;
 
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
         import android.graphics.Bitmap;
@@ -8,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
         import android.widget.Button;
         import android.widget.Spinner;
         import android.widget.ArrayAdapter;
+        import java.util.ArrayList;
+        import android.content.res.TypedArray;
         import android.view.View;
 
 /**
@@ -26,6 +29,7 @@ public class PhotoFun extends AppCompatActivity {
     private ImageView myNewImageView;
 
     private String[] myImageNames;
+    private ArrayList<Bitmap> myImageBmps;
 
     private void initSpinner (){
         Spinner spinner = (Spinner) findViewById(R.id.imageNames);
@@ -36,6 +40,19 @@ public class PhotoFun extends AppCompatActivity {
                 myImageNames);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+    }
+
+    private void initImageArray (){
+        myImageBmps = new ArrayList<Bitmap>();
+        TypedArray imageIds = getResources().obtainTypedArray(R.array.imageIdArray);
+
+        for (int i=0; i<myImageNames.length; i++) {
+            int id = imageIds.getResourceId(i, 0);
+            if (id == 0)
+                id = imageIds.getResourceId(0, 0);
+            Bitmap bmp = BitmapFactory.decodeResource(getResources(), id);
+            myImageBmps.add(bmp);
+        }
     }
 
     /*
@@ -66,6 +83,8 @@ public class PhotoFun extends AppCompatActivity {
                 (new brightnessFilterButtonListener());
 
         initSpinner();
+
+        initImageArray();
     }
 
     /*
@@ -91,5 +110,6 @@ public class PhotoFun extends AppCompatActivity {
             myNewImageView.setImageBitmap(filter.apply(myOriginalBmp));
         }
     }
+
 }
 
