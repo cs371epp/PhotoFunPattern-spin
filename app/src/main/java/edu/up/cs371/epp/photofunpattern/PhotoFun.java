@@ -23,6 +23,7 @@ public class PhotoFun extends AppCompatActivity {
     private Bitmap myOriginalBmp;
     private ImageView myNewImageView;
 
+
     /*
     * onCreate This constructor lays out the user interface, initializes the
     * original image and links buttons to their actions.
