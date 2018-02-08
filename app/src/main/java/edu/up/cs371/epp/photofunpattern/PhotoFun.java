@@ -12,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
         import java.util.ArrayList;
         import android.content.res.TypedArray;
         import android.view.View;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.AdapterView;
 
 /**
  *  class PhotoFun controls this photo manipulation app.
@@ -26,6 +28,7 @@ public class PhotoFun extends AppCompatActivity {
 
     // Image resources
     private Bitmap myOriginalBmp;
+    private ImageView myOriginalView;
     private ImageView myNewImageView;
 
     private String[] myImageNames;
@@ -40,6 +43,7 @@ public class PhotoFun extends AppCompatActivity {
                 myImageNames);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(new MySpinnerListener());
     }
 
     private void initImageArray (){
@@ -66,10 +70,10 @@ public class PhotoFun extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo_fun);
 
-        ImageView originalImageView =
+        myOriginalView =
                 (ImageView) findViewById(R.id.originalImage);
         BitmapDrawable originalDrawableBmp =
-                (BitmapDrawable) originalImageView.getDrawable();
+                (BitmapDrawable) myOriginalView.getDrawable();
         myOriginalBmp = originalDrawableBmp.getBitmap();
 
         myNewImageView = (ImageView) findViewById(R.id.newImage);
@@ -83,7 +87,6 @@ public class PhotoFun extends AppCompatActivity {
                 (new brightnessFilterButtonListener());
 
         initSpinner();
-
         initImageArray();
     }
 
@@ -111,5 +114,22 @@ public class PhotoFun extends AppCompatActivity {
         }
     }
 
+
+    private class MySpinnerListener implements OnItemSelectedListener {
+        @Override
+        public void onItemSelected(AdapterView<?> parentView,
+                                   View selectedItemView,
+                                   int position,
+                                   long id){
+            myOriginalView.setImageBitmap(myImageBmps.get(position));
+            BitmapDrawable originalDrawableBmp =
+                    (BitmapDrawable) myOriginalView.getDrawable();
+            myOriginalBmp = originalDrawableBmp.getBitmap();
+        }
+
+        public void onNothingSelected(AdapterView<?> parentView){
+
+        }
+    }
 }
 

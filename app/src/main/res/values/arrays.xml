@@ -4,10 +4,12 @@
     <array name="imageIdArray">
         <item>@drawable/olivia_small</item>
         <item>@drawable/two</item>
+        <item>@drawable/cheese</item>
     </array>
 
     <string-array name="imageNames">
         <item>Olivia</item>
         <item>Women in a window</item>
+        <item>Cheese molds</item>
     </string-array>
 </resources>
